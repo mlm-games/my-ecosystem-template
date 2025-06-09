@@ -1,6 +1,7 @@
 @tool
 extends HBoxContainer
-#TODO: fix the setting of language to a different one
+#TODO: fix the setting of language to a different one (first add the translation dumbass)
+#FIXME: Use the proper ProjectSettings "mode" type for fullscreen, maximised and minimised windows...
 @export var setting_name : StringName: # ="EXAMPLE_SETTING"
 	set(name):
 		setting_name = tr(name)
@@ -12,14 +13,12 @@ extends HBoxContainer
 func _ready() -> void:
 	set_initial_state()
 	label.text = setting_name
-	if modifiable_part_of_setting is Slider:
-		modifiable_part_of_setting.value_changed.connect(_on_modifiable_part_of_setting_value_changed.bind())
-	if modifiable_part_of_setting is Range and not Slider:
-		modifiable_part_of_setting.value_changed.connect(_on_modifiable_part_of_setting_value_changed.bind())
 	if modifiable_part_of_setting is CheckButton:
 		modifiable_part_of_setting.toggled.connect(_on_modifiable_part_of_setting_value_changed.bind())
-	if modifiable_part_of_setting is OptionButton:
+	elif modifiable_part_of_setting is OptionButton:
 		modifiable_part_of_setting.item_selected.connect(_on_modifiable_part_of_setting_value_changed.bind())
+	else:
+		modifiable_part_of_setting.value_changed.connect(_on_modifiable_part_of_setting_value_changed.bind())
 	debug_audio_settings()
 
 func set_initial_state():
@@ -31,7 +30,7 @@ func set_initial_state():
 			populate_and_set_locale_and_button_item()
 		elif setting_name == "resolution":
 			populate_resolution_button_items()
-		else: #FIXME
+		else:
 			modifiable_part_of_setting.select(modifiable_part_of_setting.get_item_metadata(SettingsData.loaded_data.settings[category][setting_name]))
 	elif modifiable_part_of_setting is CheckButton:
 		modifiable_part_of_setting.button_pressed = SettingsData.loaded_data.settings[category][setting_name]

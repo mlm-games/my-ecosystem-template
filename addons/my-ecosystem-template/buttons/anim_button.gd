@@ -1,15 +1,15 @@
 @tool
 class_name AnimButton extends Button
 
-var click_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
+static var click_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 static var hover_sound_player: AudioStreamPlayer = AudioStreamPlayer.new()
 
 @export var hover_audio: AudioStream:
-	get: return hover_sound_player.stream 
+	get: return hover_sound_player.stream if hover_sound_player else null
 	set(val): hover_sound_player.stream  = val
 
 @export var click_audio: AudioStream:
-	get: return click_stream_player.stream 
+	get: return click_stream_player.stream if click_stream_player else null
 	set(val): click_stream_player.stream  = val
 
 var tween: Tween

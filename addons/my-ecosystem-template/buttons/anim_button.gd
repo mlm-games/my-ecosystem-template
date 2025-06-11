@@ -28,7 +28,7 @@ func _ready() -> void:
 	
 	hover_sound_player.bus = "Sfx"
 	click_stream_player.bus = "Sfx"
-	get_tree().get_root().add_child.call_deferred(click_stream_player)
+	# get_tree().get_root().add_child.call_deferred(click_stream_player)
 	
 
 func _on_mouse_entered() -> void:
@@ -65,7 +65,7 @@ func _on_pressed() -> void:
 func _exit_tree() -> void:
 	#await click_stream_player.finished
 	#click_stream_player.volume_db = -1000
-	click_stream_player.queue_free()
+	# click_stream_player.queue_free()
 
 func reset_tween() -> void:
 	if tween:

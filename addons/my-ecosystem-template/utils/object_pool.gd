@@ -94,7 +94,7 @@ func release_object(obj: Node) -> void:
 
 ## Internal helper to deactivate an object and add it to the available list.
 func _release_object_internal(obj: Node) -> void:
-	obj.visible = false
+	if obj.has_method("hide"): obj.visible = false
 	if obj.has_method("set_process"): obj.set_process(false)
 	if obj.has_method("set_physics_process"): obj.set_physics_process(false)
 	_available.append(obj)

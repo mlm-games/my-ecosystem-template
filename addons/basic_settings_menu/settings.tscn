@@ -1,11 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dp42fom7cc3n0"]
+[gd_scene load_steps=4 format=3 uid="uid://dp42fom7cc3n0"]
 
 [ext_resource type="Script" uid="uid://dmkvyoeagnqhr" path="res://addons/basic_settings_menu/settings.gd" id="2_m8nmd"]
-[ext_resource type="PackedScene" uid="uid://d1kniiwptb48v" path="res://addons/basic_settings_menu/templates/option_container.tscn" id="3_3nbua"]
-[ext_resource type="PackedScene" uid="uid://bgjpgqx8f3igh" path="res://addons/basic_settings_menu/templates/int_container.tscn" id="4_3fk36"]
-[ext_resource type="PackedScene" uid="uid://cml6f2nq185vt" path="res://addons/basic_settings_menu/templates/boolean_container.tscn" id="5_2n80e"]
 [ext_resource type="Script" uid="uid://cmo5qw3rubish" path="res://addons/my-ecosystem-template/buttons/anim_button.gd" id="6_3nbua"]
-[ext_resource type="PackedScene" uid="uid://b3c7l5vjqgd12" path="res://addons/basic_settings_menu/templates/slider_setting_container.tscn" id="6_hqw76"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2n80e"]
 bg_color = Color(1, 1, 1, 1)
@@ -82,38 +78,6 @@ layout_mode = 2
 theme_override_constants/separation = 20
 metadata/_edit_use_anchors_ = true
 
-[node name="FontLabel" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_ACCESSIBILITY/PanelContainer/MarginContainer/Accessibility"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-text = "UI_LABEL_FONT"
-
-[node name="FontOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_ACCESSIBILITY/PanelContainer/MarginContainer/Accessibility"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="FontSizeLabel" type="Label" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_ACCESSIBILITY/PanelContainer/MarginContainer/Accessibility"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-text = "UI_LABEL_FONT_SIZE"
-
-[node name="FontSizeContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_ACCESSIBILITY/PanelContainer/MarginContainer/Accessibility"]
-visible = false
-layout_mode = 2
-alignment = 2
-
-[node name="FontSizeSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_ACCESSIBILITY/PanelContainer/MarginContainer/Accessibility/FontSizeContainer"]
-layout_mode = 2
-max_value = 128.0
-rounded = true
-alignment = 1
-
-[node name="CurrentLocale" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_ACCESSIBILITY/PanelContainer/MarginContainer/Accessibility" instance=ExtResource("3_3nbua")]
-layout_mode = 2
-
 [node name="MENU_OPTIONS_GAMEPLAY" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -137,26 +101,6 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20
-
-[node name="MaxFPS" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_GAMEPLAY/PanelContainer/MarginContainer/Gameplay" instance=ExtResource("4_3fk36")]
-visible = false
-layout_mode = 2
-
-[node name="HideTouchButtons" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_GAMEPLAY/PanelContainer/MarginContainer/Gameplay" instance=ExtResource("5_2n80e")]
-visible = false
-layout_mode = 2
-
-[node name="LazyMode" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_GAMEPLAY/PanelContainer/MarginContainer/Gameplay" instance=ExtResource("5_2n80e")]
-visible = false
-layout_mode = 2
-
-[node name="PauseOnLostFocus" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_GAMEPLAY/PanelContainer/MarginContainer/Gameplay" instance=ExtResource("5_2n80e")]
-visible = false
-layout_mode = 2
-
-[node name="ShowDamageNumbers" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_GAMEPLAY/PanelContainer/MarginContainer/Gameplay" instance=ExtResource("5_2n80e")]
-visible = false
-layout_mode = 2
 
 [node name="MENU_OPTIONS_VIDEO" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 visible = false
@@ -182,15 +126,6 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Fullscreen" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_VIDEO/PanelContainer/MarginContainer/Video" instance=ExtResource("5_2n80e")]
-layout_mode = 2
-
-[node name="Borderless" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_VIDEO/PanelContainer/MarginContainer/Video" instance=ExtResource("5_2n80e")]
-layout_mode = 2
-
-[node name="Resolution" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_VIDEO/PanelContainer/MarginContainer/Video" instance=ExtResource("3_3nbua")]
-layout_mode = 2
-
 [node name="MENU_OPTIONS_SOUND" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
@@ -214,21 +149,6 @@ metadata/_edit_use_anchors_ = true
 [node name="Audio" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_SOUND/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="MasterVolume" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_SOUND/PanelContainer/MarginContainer/Audio" instance=ExtResource("6_hqw76")]
-layout_mode = 2
-
-[node name="MasterBeepPlayer" type="AudioStreamPlayer" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_SOUND/PanelContainer/MarginContainer/Audio/MasterVolume"]
-
-[node name="MusicVolume" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_SOUND/PanelContainer/MarginContainer/Audio" instance=ExtResource("6_hqw76")]
-layout_mode = 2
-
-[node name="MusicBeepPlayer" type="AudioStreamPlayer" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_SOUND/PanelContainer/MarginContainer/Audio/MusicVolume"]
-
-[node name="SfxVolume" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_SOUND/PanelContainer/MarginContainer/Audio" instance=ExtResource("6_hqw76")]
-layout_mode = 2
-
-[node name="SfxBeepPlayer" type="AudioStreamPlayer" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_SOUND/PanelContainer/MarginContainer/Audio/SfxVolume"]
 
 [node name="BottomContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

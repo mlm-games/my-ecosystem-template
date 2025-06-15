@@ -1,16 +1,7 @@
 @tool
 class_name AnimButton extends Button
 
-static var click_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
-static var hover_sound_player: AudioStreamPlayer = AudioStreamPlayer.new()
-
-@export var hover_audio: AudioStream:
-	get: return hover_sound_player.stream if hover_sound_player else null
-	set(val): hover_sound_player.stream  = val
-
-@export var click_audio: AudioStream:
-	get: return click_stream_player.stream if click_stream_player else null
-	set(val): click_stream_player.stream  = val
+#NOTE: the hover and click audio is configured from UiAudioM
 
 var tween: Tween
 
@@ -27,15 +18,14 @@ func _ready() -> void:
 	pivot_offset = size/2
 	resized.connect(func(): pivot_offset = size/2)
 	
-	hover_sound_player.bus = "Sfx"
-	click_stream_player.bus = "Sfx"
 	# get_tree().get_root().add_child.call_deferred(click_stream_player)
 	
 
 func _on_mouse_entered() -> void:
 	reset_tween()
 	tween.tween_property(self, "scale", Vector2(1.075, 1.075), 0.15).set_trans(Tween.TRANS_CUBIC)
-	if hover_audio: hover_sound_player.play()
+	if !Engine.is_editor_hint():
+		UiAudioM.play_hover_sound()
 
 func _on_mouse_exited() -> void:
 	reset_tween()
@@ -51,8 +41,8 @@ func _on_button_up() -> void:
 
 
 func _on_pressed() -> void:
-	if click_audio: 
-		click_stream_player.play()
+	if !Engine.is_editor_hint():
+		UiAudioM.play_click_sound()
 
 
 #FIXME: Doesnt work due to the timers not being syncronised properly, hence looking bad.

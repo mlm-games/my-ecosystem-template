@@ -3,6 +3,8 @@
 # like DisplayServer and AudioServer. It keeps application logic out of the UI and data layers.
 extends Node
 
+#NOTE: To make a button take more space, just increase its minimum size in the respective component.
+
 func _ready() -> void:
 	SettingsData.settings_changed.connect(apply_all_settings)
 	

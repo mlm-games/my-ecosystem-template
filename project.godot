@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 WindowManager="*res://autoloads/window_manager.gd"
 SettingsData="*res://addons/basic_settings_menu/settings_data.gd"
 Transitions="*res://addons/my-ecosystem-template/transitions/transitions.tscn"
+A="*res://addons/my-ecosystem-template/autoload.gd"
 
 [editor_plugins]
 

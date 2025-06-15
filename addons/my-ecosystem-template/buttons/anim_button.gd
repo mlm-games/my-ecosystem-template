@@ -25,6 +25,7 @@ func _ready() -> void:
 	size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	
 	pivot_offset = size/2
+	resized.connect(func(): pivot_offset = size/2)
 	
 	hover_sound_player.bus = "Sfx"
 	click_stream_player.bus = "Sfx"
@@ -32,23 +33,19 @@ func _ready() -> void:
 	
 
 func _on_mouse_entered() -> void:
-	pivot_offset = size/2
 	reset_tween()
 	tween.tween_property(self, "scale", Vector2(1.075, 1.075), 0.15).set_trans(Tween.TRANS_CUBIC)
 	if hover_audio: hover_sound_player.play()
 
 func _on_mouse_exited() -> void:
-	pivot_offset = size/2
 	reset_tween()
 	tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.15).set_trans(Tween.TRANS_CUBIC)
 
 func _on_button_down() -> void:
-	pivot_offset = size/2
 	reset_tween()
 	tween.tween_property(self, "scale", Vector2(0.95, 0.95), 0.1).set_trans(Tween.TRANS_CUBIC)
 
 func _on_button_up() -> void:
-	pivot_offset = size/2
 	reset_tween()
 	tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.1).set_trans(Tween.TRANS_CUBIC)
 
@@ -62,7 +59,7 @@ func _on_pressed() -> void:
 	#await get_tree().create_timer(0.15).timeout
 	#_on_mouse_entered()
 
-func _exit_tree() -> void:
+# func _exit_tree() -> void:
 	#await click_stream_player.finished
 	#click_stream_player.volume_db = -1000
 	# click_stream_player.queue_free()

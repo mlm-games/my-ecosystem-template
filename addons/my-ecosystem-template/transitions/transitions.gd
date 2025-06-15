@@ -79,6 +79,8 @@ func _input(_event: InputEvent) -> void:
 	if transition_player.is_playing():
 			get_viewport().set_input_as_handled()
 
+
+## Need to be in an autoload to work. (or have a refernce to the scenetree)
 #hack: insert no of cycles formula/ use frequency instead of duration for another function called smooth screen shake?
 func screen_shake(duration: float, amplitude: float, camera: Camera2D = get_viewport().get_camera_2d()) -> void:
 	var tween : Tween = create_tween()
@@ -88,12 +90,13 @@ func screen_shake(duration: float, amplitude: float, camera: Camera2D = get_view
 		tween.tween_property(camera, "position", original_position + camera_offset, 1.0 / 60)  # Tween for 1 frame
 	tween.tween_property(camera, "position", original_position, 1.0 / 60)  # Return to original position
 
+
 func camera_shake(intensity: float = 1.5, duration: float = 1.5, decay: float = 3.0, camera: Camera2D = get_viewport().get_camera_2d()) -> void:
 	# Stop any existing shake tweens
 	if camera.has_meta("shake_tween") and camera.get_meta("shake_tween").is_valid():
 			camera.get_meta("shake_tween").kill()
 	
-	var tween := create_tween()
+	var tween : Tween = create_tween()
 	camera.set_meta("shake_tween", tween)
 	
 	var original_position := camera.position

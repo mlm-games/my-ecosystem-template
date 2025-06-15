@@ -1,78 +1,86 @@
+# Purpose: This autoload is the SINGLE SOURCE OF TRUTH for settings data.
+# Its job is to load, save, provide access to, and merge settings with defaults.
+# It does NOT apply settings.
+
 extends Node
 
-@onready var loaded_data : GameSettingsSave
+# This signal is emitted whenever settings are loaded or changed,
+# telling other systems (like SettingsApplier) to update.
+signal settings_changed
 
-var test_audio_player : AudioStreamPlayer = AudioStreamPlayer.new()
+# Holds the current, active settings for the game session.
+var settings_resource: GameSettingsSave
+
+const SETTINGS_SAVE_PATH: String = "user://settings.tres" # Use JSON for easy-readability
+
+func _ready() -> void:
+	load_settings()
 
 
-func _ready():
-	load_settings(true)
-	var locale_index = loaded_data.settings["accessibility"]["current_locale"]
-	var locale = locale_index
-		
-		# If it's an integer (index), convert it to the actual locale code
-	if locale_index is float:
-			var locale_keys = GameSettingsSave.LOCALES.keys()
-			if locale_index >= 0 and locale_index < locale_keys.size():
-					locale = locale_keys[locale_index]
+# Public API
+
+func get_setting(category: String, setting: String, default = null):
+	var cat_dict: Dictionary = settings_resource.get(category)
+	if cat_dict.has(setting):
+		return cat_dict.get(setting)
+
+	var default_res = GameSettingsSave.new()
+	if default_res.has(category):
+		return default_res.get(category).get(setting, default)
 	
-	if !FileAccess.file_exists(SETTINGS_SAVE_RES_PATH):
+
+func set_setting(category: String, setting: String, value) -> void:
+	var cat_dict: Dictionary = settings_resource.get(category)
+	cat_dict[setting] = value
+	# Don't save immediately. Personal preference / The user might change more things and would not want to save them.
+	# The "Save" button in the UI will call save_settings().
+
+
+# Load/Save Logic
+
+func load_settings() -> void:
+	if FileAccess.file_exists(SETTINGS_SAVE_PATH):
+		# ResourceLoader handles all type conversions (like Vector2i) automatically.
+		var loaded_res = ResourceLoader.load(SETTINGS_SAVE_PATH, "", ResourceLoader.CACHE_MODE_IGNORE)
+		if loaded_res is GameSettingsSave:
+			settings_resource = loaded_res
+		else:
+			push_warning("Settings file is corrupt or of wrong type. Creating new one.")
+			# Fallback if file is broken
+			settings_resource = GameSettingsSave.new()
+			save_settings()
+	else:
+		# Create a new settings resource if one doesn't exist.
+		settings_resource = GameSettingsSave.new()
 		save_settings()
 	
+	settings_changed.emit()
+	print("Settings loaded from .tres file.")
 
 func save_settings() -> void:
-	if loaded_data == null:
-		loaded_data = GameSettingsSave.new()
+	if not settings_resource:
+		push_error("Cannot save, no settings resource loaded.")
+		return
 	
-	var error := ResourceSaver.save(loaded_data, SETTINGS_SAVE_RES_PATH)
-	
-	if error != OK:
-		push_error("Failed to save settings to: %s, error: %d" % [SETTINGS_SAVE_RES_PATH, error])
+	# ResourceSaver handles serialization of all Godot types correctly.
+	var error = ResourceSaver.save(settings_resource, SETTINGS_SAVE_PATH)
+	if error == OK:
+		print("Settings saved to: " + SETTINGS_SAVE_PATH)
+		settings_changed.emit() # Signal that settings were saved and should be applied.
 	else:
-		print("Settings successfully saved to: %s" % SETTINGS_SAVE_RES_PATH)
-
-func load_settings(with_ui_update : bool = false, safe: bool = true) -> bool:
-	if !FileAccess.file_exists(SETTINGS_SAVE_RES_PATH):
-		print("Settings save file not found.")
-		# Initialize with defaults
-		loaded_data = GameSettingsSave.new()
-		save_settings()
-		return false
-	
-	print("Settings file was found.")
-	
-	var loaded_resource = load(SETTINGS_SAVE_RES_PATH)
-	
-	if loaded_resource == null:
-		push_error("Failed to load settings from: %s" % SETTINGS_SAVE_RES_PATH)
-		# Initialize with defaults
-		loaded_data = GameSettingsSave.new()
-		return false
-		
-	loaded_data = loaded_resource
-	
-	if with_ui_update:
-		loaded_data.apply_settings()
-	
-	return true
-
-func go_back_to_previous_scene_or_main_scene(main_scene: bool = true):
-	#TODO: add your transitions here
-	if main_scene:
-		Transitions.change_scene_with_transition(ProjectSettings.get_setting("application/run/main_scene"))
-
-static func exit_settings(settings_scene: SettingsUI):
-	settings_scene.queue_free()
+		push_error("Failed to save settings. Error code: " + str(error))
 
 
+# Utility
 
-func test_play_sound(audio_player: AudioStreamPlayer = test_audio_player, audio : StringName = SettingsTestSound) -> void:
-	audio_player.stream = load(audio)
-	audio_player.play()
-
-
-
-
-const SETTINGS_SAVE_RES_PATH: String = "user://settings.tres"
-const SettingsScene: String = "uid://dp42fom7cc3n0"
-const SettingsTestSound : String = "uid://cjom0wv26i64a"
+# Recursively merges the user dictionary on top of the defaults.
+# This ensures new settings from game updates are added to the user's config.
+func deep_merge(defaults: Dictionary, user: Dictionary) -> Dictionary:
+	var merged = defaults.duplicate(true)
+	for category in user:
+		if merged.has(category) and merged[category] is Dictionary:
+			for key in user[category]:
+				merged[category][key] = user[category][key]
+		else:
+			merged[category] = user[category]
+	return merged

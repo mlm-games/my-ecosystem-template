@@ -77,6 +77,7 @@ theme_override_constants/margin_bottom = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="Accessibility" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_ACCESSIBILITY/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20
 metadata/_edit_use_anchors_ = true
@@ -112,7 +113,6 @@ alignment = 1
 
 [node name="CurrentLocale" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_ACCESSIBILITY/PanelContainer/MarginContainer/Accessibility" instance=ExtResource("3_3nbua")]
 layout_mode = 2
-setting_name = &"Language"
 
 [node name="MENU_OPTIONS_GAMEPLAY" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 layout_mode = 2
@@ -134,32 +134,29 @@ theme_override_constants/margin_bottom = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="Gameplay" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_GAMEPLAY/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="MaxFPS" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_GAMEPLAY/PanelContainer/MarginContainer/Gameplay" instance=ExtResource("4_3fk36")]
+visible = false
 layout_mode = 2
-setting_name = &"FPS"
 
 [node name="HideTouchButtons" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_GAMEPLAY/PanelContainer/MarginContainer/Gameplay" instance=ExtResource("5_2n80e")]
 visible = false
 layout_mode = 2
-setting_name = &"UI_LABEL_HIDE_BUTTONS"
 
 [node name="LazyMode" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_GAMEPLAY/PanelContainer/MarginContainer/Gameplay" instance=ExtResource("5_2n80e")]
 visible = false
 layout_mode = 2
-setting_name = &"Lazy Mode"
 
 [node name="PauseOnLostFocus" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_GAMEPLAY/PanelContainer/MarginContainer/Gameplay" instance=ExtResource("5_2n80e")]
 visible = false
 layout_mode = 2
-setting_name = &"Pause On Lost Focus"
 
 [node name="ShowDamageNumbers" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_GAMEPLAY/PanelContainer/MarginContainer/Gameplay" instance=ExtResource("5_2n80e")]
 visible = false
 layout_mode = 2
-setting_name = &"Show Damage Numbers"
 
 [node name="MENU_OPTIONS_VIDEO" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 visible = false
@@ -182,19 +179,17 @@ theme_override_constants/margin_bottom = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="Video" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_VIDEO/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Fullscreen" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_VIDEO/PanelContainer/MarginContainer/Video" instance=ExtResource("5_2n80e")]
 layout_mode = 2
-setting_name = &"Fullscreen"
 
 [node name="Borderless" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_VIDEO/PanelContainer/MarginContainer/Video" instance=ExtResource("5_2n80e")]
 layout_mode = 2
-setting_name = &"Borderless"
 
 [node name="Resolution" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_VIDEO/PanelContainer/MarginContainer/Video" instance=ExtResource("3_3nbua")]
 layout_mode = 2
-setting_name = &"Resolution"
 
 [node name="MENU_OPTIONS_SOUND" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer"]
 visible = false
@@ -217,23 +212,21 @@ theme_override_constants/margin_bottom = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="Audio" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_SOUND/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="MasterVolume" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_SOUND/PanelContainer/MarginContainer/Audio" instance=ExtResource("6_hqw76")]
 layout_mode = 2
-setting_name = &"Volume"
 
 [node name="MasterBeepPlayer" type="AudioStreamPlayer" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_SOUND/PanelContainer/MarginContainer/Audio/MasterVolume"]
 
 [node name="MusicVolume" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_SOUND/PanelContainer/MarginContainer/Audio" instance=ExtResource("6_hqw76")]
 layout_mode = 2
-setting_name = &"Music volume"
 
 [node name="MusicBeepPlayer" type="AudioStreamPlayer" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_SOUND/PanelContainer/MarginContainer/Audio/MusicVolume"]
 
 [node name="SfxVolume" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_SOUND/PanelContainer/MarginContainer/Audio" instance=ExtResource("6_hqw76")]
 layout_mode = 2
-setting_name = &"Sound effect volume"
 
 [node name="SfxBeepPlayer" type="AudioStreamPlayer" parent="MarginContainer/VBoxContainer/TabContainer/MENU_OPTIONS_SOUND/PanelContainer/MarginContainer/Audio/SfxVolume"]
 

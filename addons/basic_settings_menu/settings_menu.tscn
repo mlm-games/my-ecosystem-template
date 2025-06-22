@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dp42fom7cc3n0"]
+[gd_scene load_steps=5 format=3 uid="uid://dp42fom7cc3n0"]
 
-[ext_resource type="Script" uid="uid://dmkvyoeagnqhr" path="res://addons/basic_settings_menu/settings.gd" id="2_m8nmd"]
+[ext_resource type="Script" uid="uid://dcvc700ur1w4b" path="res://addons/basic_settings_menu/settings_menu.gd" id="2_m8nmd"]
+[ext_resource type="PackedScene" uid="uid://bwcsibejua3bb" path="res://addons/basic_settings_menu/setting_confirmation_dialog.tscn" id="3_3fo0h"]
 [ext_resource type="Script" uid="uid://cmo5qw3rubish" path="res://addons/my-ecosystem-template/buttons/anim_button.gd" id="6_3nbua"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2n80e"]
@@ -168,6 +169,10 @@ size_flags_vertical = 4
 text = "MENU_LABEL_BACK"
 script = ExtResource("6_3nbua")
 metadata/_custom_type_script = "uid://cmo5qw3rubish"
+
+[node name="ConfirmationDialog" parent="." instance=ExtResource("3_3fo0h")]
+unique_name_in_owner = true
+visible = false
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BottomContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BottomContainer/BackButton" to="." method="_on_back_button_pressed"]

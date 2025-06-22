@@ -2,27 +2,7 @@
 # It holds the structure and default values of your settings.
 # All logic has been moved to SettingsData and SettingsApplier.
 
-class_name GameSettingsSave extends Resource
-
-# By exporting dictionaries for each category, we can edit defaults in the Inspector.
-@export var accessibility: Dictionary = {
-	"current_locale": "en",
-}
-@export var gameplay: Dictionary = {
-	"max_fps": 60,
-	"show_damage_numbers": true,
-}
-@export var video: Dictionary = {
-	"borderless": false,
-	"fullscreen": true,
-	"resolution": Vector2i(1280, 720),
-}
-@export var audio: Dictionary = {
-	"Master": 0.8,
-	"Music": 0.8,
-	"Sfx": 0.8,
-}
-
+class_name SettingsConstants extends Resource
 
 const LOCALES = {
 	"en": "English",

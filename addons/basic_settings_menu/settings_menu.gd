@@ -32,6 +32,7 @@ const TYPE_TO_TEMPLATE_MAP: Dictionary = {
 }
 
 @onready var confirmation_dialog: ConfirmationDialog = %ConfirmationDialog
+@onready var page_animator: PopupAnimator = %PopupAnimator
 
 var _pending_confirmation_control: BaseSettingControl
 var _pending_old_value
@@ -43,6 +44,9 @@ func _ready() -> void:
 	confirmation_dialog.canceled.connect(_on_dialog_dismissed)
 	
 	_build_ui_from_settings_profile()
+	
+	visible = false
+	page_animator.animate_in()
 	
 	# To prevent the initial focus button sound
 	get_tree().create_timer(0.1, false).timeout.connect(func(): can_play_focus_sfx = true)
@@ -140,9 +144,9 @@ func _on_dialog_dismissed() -> void:
 func _on_save_button_pressed() -> void:
 	SettingsManager.save_profile()
 	# The 'settings_changed' signal in SettingsManager will trigger SettingsApplier.
-
+	page_animator.animate_out(queue_free)
 
 func _on_back_button_pressed() -> void:
 	# This should transition back to your main menu or previous scene
 	# For now, it just hides the settings screen.
-	queue_free()
+	page_animator.animate_out(queue_free)

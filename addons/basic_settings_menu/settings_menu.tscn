@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dp42fom7cc3n0"]
+[gd_scene load_steps=6 format=3 uid="uid://dp42fom7cc3n0"]
 
 [ext_resource type="Script" uid="uid://dcvc700ur1w4b" path="res://addons/basic_settings_menu/settings_menu.gd" id="2_m8nmd"]
 [ext_resource type="PackedScene" uid="uid://bwcsibejua3bb" path="res://addons/basic_settings_menu/setting_confirmation_dialog.tscn" id="3_3fo0h"]
+[ext_resource type="Script" uid="uid://cnfh1rl7a17mv" path="res://addons/my-ecosystem-template/autoloads/popup_animator.gd" id="4_k0wj0"]
 [ext_resource type="Script" uid="uid://cmo5qw3rubish" path="res://addons/my-ecosystem-template/buttons/anim_button.gd" id="6_3nbua"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2n80e"]
 bg_color = Color(1, 1, 1, 1)
 
 [node name="Settings" type="Control"]
+process_mode = 3
+top_level = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -173,6 +176,12 @@ metadata/_custom_type_script = "uid://cmo5qw3rubish"
 [node name="ConfirmationDialog" parent="." instance=ExtResource("3_3fo0h")]
 unique_name_in_owner = true
 visible = false
+
+[node name="PopupAnimator" type="Node" parent="." node_paths=PackedStringArray("target_node")]
+unique_name_in_owner = true
+script = ExtResource("4_k0wj0")
+target_node = NodePath("..")
+metadata/_custom_type_script = "uid://cnfh1rl7a17mv"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BottomContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BottomContainer/BackButton" to="." method="_on_back_button_pressed"]

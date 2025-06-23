@@ -13,9 +13,9 @@ func _input(event):
 		match event.keycode:
 			KEY_F11:
 				toggle_fullscreen()
+				#NOTE: to be changed based on pause menu
 			#KEY_ESCAPE: # If you do not use esc for pausing the game
-				#if is_fullscreen():
-					#exit_fullscreen()
+				#get_tree().root.add_child(preload("res://addons/basic_settings_menu/settings_menu.tscn").instantiate())
 
 func toggle_fullscreen():
 	if is_fullscreen():

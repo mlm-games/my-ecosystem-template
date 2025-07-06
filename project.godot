@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 WindowManager="*res://autoloads/window_manager.gd"
-Transitions="*res://addons/my-ecosystem-template/transitions/transitions.tscn"
+STransitions="*res://addons/my-ecosystem-template/transitions/screen_transitions.tscn"
 A="*res://addons/my-ecosystem-template/autoloads/autoload.gd"
 AudioM="*res://addons/my-ecosystem-template/autoloads/static_audio_manager.gd"
 UiAudioM="*res://addons/my-ecosystem-template/autoloads/ui_audio_manager.gd"

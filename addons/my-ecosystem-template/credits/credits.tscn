@@ -1,23 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://bq0gelfcjnqvg"]
+[gd_scene load_steps=8 format=3 uid="uid://bq0gelfcjnqvg"]
 
-[ext_resource type="Script" uid="uid://dse3bicj0tht7" path="res://scenes/credits.gd" id="1_8gwij"]
-[ext_resource type="Shader" uid="uid://bcu5vdlmjocga" path="res://assets/seamless.gdshader" id="2_mah5v"]
-[ext_resource type="Texture2D" uid="uid://b1xyoti4p4qu2" path="res://assets/burger.svg" id="3_kyhnv"]
-[ext_resource type="PackedScene" uid="uid://cs2fl7pw33da1" path="res://scenes/anim-button.tscn" id="4_ooihk"]
-[ext_resource type="Theme" uid="uid://dvdl0g6ajpyuu" path="res://assets/main_theme.tres" id="5_ih6pn"]
+[ext_resource type="Script" uid="uid://dse3bicj0tht7" path="res://addons/my-ecosystem-template/credits/credits.gd" id="1_8gwij"]
+[ext_resource type="Script" uid="uid://cnfh1rl7a17mv" path="res://addons/my-ecosystem-template/transitions/popup_animator.gd" id="3_wlpaq"]
+[ext_resource type="PackedScene" uid="uid://cs2fl7pw33da1" path="res://addons/my-ecosystem-template/buttons/anim-button.tscn" id="4_ooihk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ouk20"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ytr4m"]
-shader = ExtResource("2_mah5v")
-shader_parameter/speed = 0.05
-shader_parameter/alpha = 0.08
-shader_parameter/tint_color = Color(1, 1, 1, 1)
-shader_parameter/wave_amplitude = 0.01
-shader_parameter/wave_frequency = 5.0
-shader_parameter/direction = Vector2(1, 1)
-shader_parameter/pixel_snap = false
-shader_parameter/brightness = 1.0
+[sub_resource type="Gradient" id="Gradient_84eqh"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wlpaq"]
+gradient = SubResource("Gradient_84eqh")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytr4m"]
 bg_color = Color(0.6, 0.6, 0.6, 0.345098)
@@ -33,14 +27,13 @@ grow_vertical = 2
 script = ExtResource("1_8gwij")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_ytr4m")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_kyhnv")
+texture = SubResource("GradientTexture1D_wlpaq")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -70,13 +63,7 @@ size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
-text = "Burger Model - Kenney art
-Tile textures - Ambientcg.org
- 
-Music - https://opengameart.org/content/freelance
-Win sound: https://opengameart.org/content/positive-sound
-Font: https://www.freejapanesefont.com/mini-wakuwaku/
-UI sounds (other): https://opengameart.org/content/interface-beeps
+text = "Kenney - UI Sound Effects
 "
 fit_content = true
 horizontal_alignment = 1
@@ -103,7 +90,6 @@ size_flags_vertical = 3
 [node name="ExitButton" parent="PanelContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_ooihk")]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("5_ih6pn")
 text = "Close"
 
 [node name="Control2" type="Control" parent="PanelContainer/HBoxContainer/VBoxContainer"]
@@ -127,3 +113,7 @@ bbcode_enabled = true
 text = "[font_size=50][color=yellow]Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PopupAnimator" type="Node" parent="."]
+script = ExtResource("3_wlpaq")
+metadata/_custom_type_script = "uid://cnfh1rl7a17mv"

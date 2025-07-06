@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://c7j5jqynag4uw"]
 
-[ext_resource type="Script" uid="uid://b13rnxpo5kt4b" path="res://addons/my-ecosystem-template/transitions/transitions.gd" id="1_mlxrt"]
+[ext_resource type="Script" uid="uid://b13rnxpo5kt4b" path="res://addons/my-ecosystem-template/transitions/screen_transitions.gd" id="1_23rxh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t7n6f"]
 
@@ -135,7 +135,7 @@ _data = {
 [node name="TransitionScreen" type="CanvasLayer"]
 process_mode = 3
 layer = 99
-script = ExtResource("1_mlxrt")
+script = ExtResource("1_23rxh")
 
 [node name="TransitionRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)

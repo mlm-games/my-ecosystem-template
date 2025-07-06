@@ -17,10 +17,11 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"): # Use a dedicated "pause" action in your project
-		if get_tree().paused:
-			unpause()
-		else:
-			pause()
+		#if get_tree().paused: #causes other bugs, like unpausing in settings
+			#unpause()
+		#else:
+		if not get_tree().paused: pause()
+		%ResumeButton.grab_focus()
 		get_viewport().set_input_as_handled()
 
 func pause() -> void:

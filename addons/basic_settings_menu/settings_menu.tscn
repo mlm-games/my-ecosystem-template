@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dcvc700ur1w4b" path="res://addons/basic_settings_menu/settings_menu.gd" id="2_m8nmd"]
 [ext_resource type="PackedScene" uid="uid://bwcsibejua3bb" path="res://addons/basic_settings_menu/setting_confirmation_dialog.tscn" id="3_3fo0h"]
-[ext_resource type="Script" uid="uid://cnfh1rl7a17mv" path="res://addons/my-ecosystem-template/autoloads/popup_animator.gd" id="4_k0wj0"]
+[ext_resource type="Script" uid="uid://cnfh1rl7a17mv" path="res://addons/my-ecosystem-template/transitions/popup_animator.gd" id="4_k0wj0"]
 [ext_resource type="Script" uid="uid://cmo5qw3rubish" path="res://addons/my-ecosystem-template/buttons/anim_button.gd" id="6_3nbua"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2n80e"]

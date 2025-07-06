@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d1e2f3g4h5i6j"]
 
-[ext_resource type="Script" uid="uid://i3hey8xc0u3v" path="res://addons/basic_settings_menu/pause_menu.gd" id="1_abcde"]
-[ext_resource type="Script" uid="uid://cnfh1rl7a17mv" path="res://addons/my-ecosystem-template/autoloads/popup_animator.gd" id="2_fghij"]
+[ext_resource type="Script" uid="uid://i3hey8xc0u3v" path="res://addons/my-ecosystem-template/pause-menu/pause_menu.gd" id="1_abcde"]
+[ext_resource type="Script" uid="uid://cnfh1rl7a17mv" path="res://addons/my-ecosystem-template/transitions/popup_animator.gd" id="2_fghij"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3

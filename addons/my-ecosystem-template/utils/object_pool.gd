@@ -34,7 +34,7 @@ var _pool_scene: PackedScene ## The scene to use for creating new objects in the
 var _available: Array[Node] = [] ## A list of inactive, ready-to-use objects.
 var _active: Array[Node] = [] ## A list of objects currently active in the scene.
 var _max_size: int ## The maximum number of objects this pool can manage.
-
+var release_and_add_if_full: bool = true
 
 ## Initializes the object pool.
 ##[br]
@@ -63,15 +63,18 @@ func get_object() -> Node:
 	
 	if _available.is_empty():
 		if _active.size() >= _max_size:
-			push_warning("ObjectPool: Max size reached. Cannot create new object.")
-			return null
+			if release_and_add_if_full:
+				release_object(_active.pop_back())
+			else:
+				push_warning("ObjectPool: Max size reached. Cannot create new object.")
+				return null
 		obj = _pool_scene.instantiate()
 		add_child(obj)
 	else:
 		obj = _available.pop_front()
 	
 	_active.append(obj)
-	obj.visible = true
+	if obj.has_method("show"): obj.visible = true
 	if obj.has_method("set_process"): obj.set_process(true)
 	if obj.has_method("set_physics_process"): obj.set_physics_process(true)
 	if obj.has_method("_on_spawned_from_pool"): obj._on_spawned_from_pool()

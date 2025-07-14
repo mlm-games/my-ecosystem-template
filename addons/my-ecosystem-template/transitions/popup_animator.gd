@@ -27,9 +27,6 @@ func _on_target_resized() -> void:
 
 func animate_in() -> void:
 
-	if _active_tween:
-		_active_tween.kill()
-
 	target_node.scale = Vector2.ONE * transition_scale
 	target_node.modulate = Color.TRANSPARENT
 	target_node.visible = true

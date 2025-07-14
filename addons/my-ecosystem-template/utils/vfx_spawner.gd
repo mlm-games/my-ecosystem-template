@@ -39,7 +39,7 @@ static func spawn_particles(particle_scene: PackedScene, global_pos: Vector2, pa
 ## [param global_pos]: The global position where the number should appear.
 ##[br]
 ## [param color]: The [Color] of the number text.
-static func spawn_damage_number(amount: int, global_pos: Vector2, color: Color = Color.WHITE) -> void:
+static func spawn_damage_number(amount: int, global_pos: Vector2, color: Color = Color.WHITE) -> Tween:
 	var label = Label.new()
 	label.text = str(amount)
 	label.add_theme_color_override("font_color", color)
@@ -53,6 +53,7 @@ static func spawn_damage_number(amount: int, global_pos: Vector2, color: Color =
 	tween.tween_property(label, "position:y", label.position.y - 50, 1.0)
 	tween.tween_property(label, "modulate:a", 0.0, 1.0)
 	tween.finished.connect(label.queue_free)
+	return tween
 
 
 ## Attaches a [Timer] to a node that spawns a trail effect at regular intervals.

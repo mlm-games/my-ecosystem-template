@@ -23,21 +23,21 @@ func _ready() -> void:
 
 func _on_mouse_entered() -> void:
 	reset_tween()
-	tween.tween_property(self, "scale", Vector2(1.075, 1.075), 0.15)
+	tween.tween_property(self, "scale", Vector2.ONE * 1.1, 0.1)
 	if !Engine.is_editor_hint():
 		UiAudioM.play_hover_sound()
 
 func _on_mouse_exited() -> void:
 	reset_tween()
-	tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.15)
+	tween.tween_property(self, "scale", Vector2.ONE, 0.1)
 
 func _on_button_down() -> void:
 	reset_tween()
-	tween.tween_property(self, "scale", Vector2(0.95, 0.95), 0.1)
+	tween.tween_property(self, "scale", Vector2.ONE * 0.95, 0.1)
 
 func _on_button_up() -> void:
 	reset_tween()
-	tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.1)
+	tween.tween_property(self, "scale", Vector2.ONE, 0.1)
 
 
 func _on_pressed() -> void:
@@ -45,6 +45,4 @@ func _on_pressed() -> void:
 		UiAudioM.play_click_sound()
 
 func reset_tween() -> void:
-	if tween:
-		tween.kill()
-	tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	tween = create_tween().set_trans(Tween.TRANS_SINE)

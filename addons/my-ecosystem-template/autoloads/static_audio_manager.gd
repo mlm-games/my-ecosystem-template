@@ -46,7 +46,7 @@ func play_random_sound(sounds: Array[AudioStream], volume_db: float = 0.0, bus: 
 	if sounds.is_empty(): return
 	play_sound_varied(sounds.pick_random(), 0.1, volume_db, bus)
 
-static func crossfade_music(from_player: AudioStreamPlayer, to_player: AudioStreamPlayer, duration: float = 1.0) -> void:
+static func crossfade_music(from_player: AudioStreamPlayer, to_player: AudioStreamPlayer, duration: float = 1.0) -> Tween:
 	if not from_player or not to_player: return
 
 	to_player.volume_db = -80.0
@@ -57,3 +57,4 @@ static func crossfade_music(from_player: AudioStreamPlayer, to_player: AudioStre
 	tween.tween_property(from_player, "volume_db", -80.0, duration)
 	tween.tween_property(to_player, "volume_db", 0.0, duration)
 	tween.finished.connect(from_player.stop)
+	return tween

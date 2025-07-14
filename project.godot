@@ -18,15 +18,15 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-WindowManager="*res://autoloads/window_manager.gd"
+WindowManager="*res://scripts/autoloads/window_manager.gd"
 STransitions="*res://addons/my-ecosystem-template/transitions/screen_transitions.tscn"
-A="*res://addons/my-ecosystem-template/autoloads/autoload.gd"
 AudioM="*res://addons/my-ecosystem-template/autoloads/static_audio_manager.gd"
 UiAudioM="*res://addons/my-ecosystem-template/autoloads/ui_audio_manager.gd"
 SettingsManager="*res://addons/basic_settings_menu/settings_manager.gd"
 SettingsApplier="*res://addons/basic_settings_menu/settings_applier.gd"
 PauseMenu="*res://addons/my-ecosystem-template/pause-menu/pause_menu.tscn"
 LayerNames="*res://addons/layer_names/generated/layer_names.gd"
+A="*res://scripts/autoloads/autoload.tscn"
 
 [editor_plugins]
 

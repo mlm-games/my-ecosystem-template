@@ -54,9 +54,9 @@ static func apply_knockback(body: CharacterBody2D, direction: Vector2, force: fl
 static func slow_motion(time_scale: float = 0.3, duration: float = 0.5) -> Tween:
 	Engine.time_scale = time_scale
 	# The timer must be process-agnostic to work correctly when time_scale is low or zero.
-	await Engine.get_main_loop().create_timer(duration, true, false, true).timeout
+	await A.create_timer(duration, true, false, true).timeout
 	
-	var tween = Engine.get_main_loop().create_tween()
+	var tween = A.create_tween()
 	tween.tween_property(Engine, "time_scale", 1.0, 0.2).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
 	return tween
 

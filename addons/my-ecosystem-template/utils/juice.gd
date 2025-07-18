@@ -89,4 +89,4 @@ static func set_tweened_value(node: Node, property: NodePath, val: Variant, dur:
 
 
 static func create_global_tween(trans := Tween.TRANS_CUBIC) -> Tween:
-	return Engine.get_main_loop().create_tween().set_trans(Tween.TRANS_CUBIC)
+	return A.create_tween().set_trans(Tween.TRANS_CUBIC)

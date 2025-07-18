@@ -7,7 +7,7 @@ const SETTINGS_MENU_SCENE = preload("res://addons/basic_settings_menu/settings_m
 
 func _ready() -> void:
 	visible = false
-	get_tree().paused = false
+	A.tree.paused = false
 	
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
@@ -17,15 +17,15 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"): # Use a dedicated "pause" action in your project
-		#if get_tree().paused: #causes other bugs, like unpausing in settings
+		#if A.tree.paused: #causes other bugs, like unpausing in settings
 			#unpause()
 		#else:
-		if not get_tree().paused: pause()
+		if not A.tree.paused: pause()
 		%ResumeButton.grab_focus()
 		get_viewport().set_input_as_handled()
 
 func pause() -> void:
-	get_tree().paused = true
+	A.tree.paused = true
 	page_animator.animate_in()
 	resume_button.grab_focus()
 
@@ -34,7 +34,7 @@ func unpause() -> void:
 	page_animator.animate_out(Callable(self, "_on_unpause_animation_finished"))
 
 func _on_unpause_animation_finished() -> void:
-	get_tree().paused = false
+	A.tree.paused = false
 	
 func _on_resume_button_pressed() -> void:
 	unpause()
@@ -50,4 +50,4 @@ func _on_settings_button_pressed() -> void:
 
 func _on_quit_button_pressed() -> void:
 	hide()
-	get_tree().paused = false
+	A.tree.paused = false

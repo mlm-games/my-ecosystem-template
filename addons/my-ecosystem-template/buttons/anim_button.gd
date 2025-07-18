@@ -18,8 +18,6 @@ func _ready() -> void:
 	pivot_offset = size/2
 	resized.connect(func(): pivot_offset = size/2)
 	
-	# get_tree().get_root().add_child.call_deferred(click_stream_player)
-	
 
 func _on_mouse_entered() -> void:
 	reset_tween()

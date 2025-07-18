@@ -97,7 +97,7 @@ static func flash_white(node: Node, duration: float = 0.1) -> Tween:
 ## [/codeblock]
 static func freeze_frame(duration: float = 0.05) -> void:
 	Engine.time_scale = 0.0
-	await Engine.get_main_loop().create_timer(duration, true, false, true).timeout
+	await A.create_timer(duration, true, false, true).timeout
 	Engine.time_scale = 1.0
 
 
@@ -105,7 +105,7 @@ static func freeze_frame(duration: float = 0.05) -> void:
 
 
 #hack: insert no of cycles formula/ use frequency instead of duration for another function called smooth screen shake?
-static func screen_shake(duration: float, amplitude: float, camera: Camera2D = Engine.get_main_loop().root.get_viewport().get_camera_2d()) -> void:
+static func screen_shake(duration: float, amplitude: float, camera: Camera2D = A.root.get_viewport().get_camera_2d()) -> void:
 	_screen_shake_tween = Juice.create_global_tween()
 	var original_position : Vector2 = camera.position
 	for i in range(int(duration * 60)):  # Assuming 60 FPS
@@ -114,7 +114,7 @@ static func screen_shake(duration: float, amplitude: float, camera: Camera2D = E
 	_screen_shake_tween.tween_property(camera, "position", original_position, 1.0 / 60)  # Return to original position
 
 # For use with anim_library (hit effect only)
-static func hit_shake(amount: float = 10.0, duration: float = 0.2, camera: Camera2D = Engine.get_main_loop().root.get_viewport().get_camera_2d()) -> void:
+static func hit_shake(amount: float = 10.0, duration: float = 0.2, camera: Camera2D = A.root.get_viewport().get_camera_2d()) -> void:
 	_screen_shake_tween = Juice.create_global_tween(Tween.TRANS_SINE).set_parallel()
 	
 	camera.offset = Vector2.ZERO
@@ -126,10 +126,10 @@ static func hit_shake(amount: float = 10.0, duration: float = 0.2, camera: Camer
 	_screen_shake_tween.chain().tween_property(camera, "offset", Vector2.ZERO, duration * 0.75).set_trans(Tween.TRANS_CUBIC)
 
 # For smoother screen shakes
-static func camera_shake(intensity: float = 1.5, duration: float = 1.5, decay: float = 3.0, camera: Camera2D =  Engine.get_main_loop().root.get_viewport().get_camera_2d()) -> void:
+static func camera_shake(intensity: float = 1.5, duration: float = 1.5, decay: float = 3.0, camera: Camera2D =  A.root.get_viewport().get_camera_2d()) -> void:
 	# Stop any existing shake tweens
 	
-	_screen_shake_tween = Engine.get_main_loop().create_tween()
+	_screen_shake_tween = A.create_tween()
 	camera.set_meta("shake_tween", _screen_shake_tween)
 	
 	var original_position := camera.position
@@ -163,7 +163,7 @@ static func camera_shake(intensity: float = 1.5, duration: float = 1.5, decay: f
 	)
 
 static func squash_simple(target: Object, x_force: float, y_force: float, duration: float = 0.3, trans_type: Tween.TransitionType = Tween.TRANS_QUAD, ) -> Tween:
-	var tween : Tween =  Engine.get_main_loop().create_tween()
+	var tween : Tween =  A.create_tween()
 	# initial squash
 	tween.tween_property(target, "scale:x", 1 - x_force, duration/2).set_trans(trans_type).set_ease(Tween.EASE_OUT)
 	tween.parallel().tween_property(target, "scale:y", 1 + y_force, duration/2).set_trans(trans_type).set_ease(Tween.EASE_OUT)

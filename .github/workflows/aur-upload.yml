@@ -74,7 +74,7 @@ jobs:
           provides=('<placeholdername>')
           conflicts=('<placeholdername>')
           options=('!strip')
-          source=("https://raw.githubusercontent.com/mlm-games/<placeholdername>/fastlane/icon.png")
+          source=("https://raw.githubusercontent.com/mlm-games/<placeholdername>/refs/heads/main/fastlane/metadata/android/en-US/images/icon.png")
           source_x86_64=("<placeholdername>-${{ inputs.version_name }}-x64::https://github.com/mlm-games/<placeholdername>/releases/download/${{ inputs.version_name }}/<placeholdername>.x86_64")
           source_aarch64=("<placeholdername>-${{ inputs.version_name }}-arm64::https://github.com/mlm-games/<placeholdername>/releases/download/${{ inputs.version_name }}/<placeholdername>.arm64")
           sha256sums=('SKIP')

@@ -76,11 +76,11 @@ static func pulse_glow(node: Control, color: Color = Color.WHITE, duration: floa
 		push_warning("UIEffects.pulse_glow requires the node to have a ShaderMaterial.")
 		node.material = ShaderMaterial.new()
 		# Assumes you have a glow shader at this path
-		# node.material.shader = preload("res://shaders/ui_glow.gdshader")
+		node.material.shader = preload("uid://c5tus8tbloipg")
 		return
 
 	# This line is an example; your shader might have different parameter names.
-	# node.material.set_shader_parameter("glow_color", color)
+	node.material.set_shader_parameter("glow_color", color)
 	
 	var tween = node.create_tween()
 	tween.set_loops()

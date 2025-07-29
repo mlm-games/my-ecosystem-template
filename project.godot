@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="<PlaceHolderName>"
-run/main_scene="uid://dp42fom7cc3n0"
+run/main_scene="uid://ddl5roo03rvdl"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(0.0924416, 0.147392, 0.187741, 1)
 config/icon="res://icon.svg"
@@ -22,11 +22,12 @@ WindowManager="*res://game/scripts/autoloads/window_manager.gd"
 STransitions="*res://addons/my-ecosystem-template/transitions/screen_transitions.tscn"
 SettingsManager="*res://addons/basic_settings_menu/settings_manager.gd"
 SettingsApplier="*res://addons/basic_settings_menu/settings_applier.gd"
-UiAudioM="*res://addons/my-ecosystem-template/utils/audio/ui_audio_manager.gd"
-AudioM="*res://addons/my-ecosystem-template/utils/audio/autoload_audio_manager.gd"
+UiAudioM="*res://addons/my-ecosystem-template/managers/audio/ui_audio_manager.gd"
+AudioM="*res://addons/my-ecosystem-template/managers/audio/autoload_audio_manager.gd"
 PauseMenu="*res://addons/my-ecosystem-template/pause-menu/pause_menu.tscn"
 LayerNames="*res://addons/layer_names/generated/layer_names.gd"
 A="*res://game/scenes/autoloads/autoload.tscn"
+DebugShortcutsManager="*res://addons/my-ecosystem-template/managers/debug_shortcuts_manager.gd"
 
 [display]
 
@@ -71,4 +72,4 @@ locale/translations=PackedStringArray("res://locale/translations.ar.translation"
 [rendering]
 
 textures/vram_compression/import_etc2_astc=true
-environment/defaults/default_clear_color=Color(0.0823529, 0.0941176, 0.160784, 1)
+environment/defaults/default_clear_color=Color(0.230449, 0.473537, 0.268498, 1)

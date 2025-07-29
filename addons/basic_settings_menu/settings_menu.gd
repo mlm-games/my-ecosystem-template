@@ -1,7 +1,6 @@
-#TODO: ADD ICONS SAYING ESC FOR BACK, ENTER FOR SELECT
+#TODO: ADD ICONS SAYING ESC FOR BACK, ENTER FOR SELECT (or maybe just use the controller icons addon)
 #TODO: ADD pause_on_alt_tab
-#TODO: VolumeSliders makes sound when changed indicating the sound change
-#FIXME: resoultion items not being applied properly, check if lazy mode works
+#TODO: VolumeSliders makes sound when changed indicating the sound change (not the awful sound, maybe something better like until then's)
 #const BUS_MASTER = "Master"
 #const BUS_MUSIC = "Music"
 #const BUS_SFX = "SFX"
@@ -50,8 +49,6 @@ func _ready() -> void:
 	
 	# To prevent the initial focus button sound
 	A.tree.create_timer(0.1, false).timeout.connect(func(): can_play_focus_sfx = true)
-
-
 	
 	# Adding a new setting in GameSettingsSave.gd,
 	# will make it appear here automatically if a rule is added to the functions below.

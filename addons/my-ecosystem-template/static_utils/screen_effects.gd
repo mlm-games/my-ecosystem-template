@@ -51,6 +51,8 @@ static func chromatic_aberration_pulse(shader_material: ShaderMaterial, duration
 	if not shader_material or not shader_material.shader:
 		push_error("Chromatic Aberration: Invalid ShaderMaterial provided.")
 		return
+	
+	shader_material.shader = preload("uid://c07g25os2e3ln")
 
 	var tween = shader_material.create_tween()
 	tween.tween_property(shader_material, "shader_parameter/strength", strength, duration * 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)

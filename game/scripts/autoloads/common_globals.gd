@@ -10,6 +10,6 @@ func _input(event):
 					DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	
 	#if event.is_action_pressed("undo"):
-		#UndoRedo.undo()
+		#UndoRedoManager.undo()
 	#else:
-		#UndoRedo.redo()
+		#UndoRedoManager.redo()

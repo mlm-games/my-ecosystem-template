@@ -2,3 +2,7 @@
 extends Node #class_name A for Autoload
 
 static var tree : SceneTree = Engine.get_main_loop()
+
+func  _ready() -> void:
+			print(ProjectSettings.get_global_class_list())
+			print(ProjectSettings.get_global_class_list())

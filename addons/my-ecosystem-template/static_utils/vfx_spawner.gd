@@ -4,7 +4,7 @@
 ## visual effects. Includes built-in automatic cleanup to prevent memory leaks
 ## and keep the scene tree tidy.
 class_name VFXSpawner
-extends RefCounted
+extends C
 
 
 ## Instantiates a particle scene, plays it once, and automatically queues it for deletion.

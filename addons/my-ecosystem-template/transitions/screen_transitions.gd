@@ -43,6 +43,7 @@ func change_scene_with_transition_packed(scene: PackedScene, anim_name: String =
 	transition(anim_name)
 	await screen_covered
 	A.tree.change_scene_to_packed(scene)
+	
 
 func transition(anim_name: StringName = "fadeToBlack", single_transition_only: bool = false, speed_scale: float = 1, pop_up: bool = false) -> void:
 	if single_transition_only:

@@ -7,7 +7,7 @@
     <authors>mlmstudios</authors>
     <projectUrl>https://github.com/mlm-games/<placeholdername></projectUrl>
     <licenseUrl>https://github.com/mlm-games/<placeholdername>/blob/main/LICENSE</licenseUrl>
-    <iconUrl>https://raw.githubusercontent.com/mlm-games/<placeholdername>/main/icon.png</iconUrl>
+    <iconUrl>https://cdn.statically.io/gh/mlm-games/<placeholdername>/<PlaceHolderVersion>/fastlane/metadata/android/en-US/images/icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description><PlaceHolderLongDesc></description>
     <summary><PlaceHolderShortDesc></summary>

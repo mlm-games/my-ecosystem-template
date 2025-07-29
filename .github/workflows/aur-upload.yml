@@ -104,8 +104,8 @@ jobs:
           Terminal=false
           Type=Application
           Icon=<placeholdername>
-          Comment=A simple pomodoro timer application
-          Categories=Utility;Office;
+          Comment=<PlaceholderShortDesc>
+          Categories=Games;
           StartupNotify=true
           DESKTOP_EOF
           }

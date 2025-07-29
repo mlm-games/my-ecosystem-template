@@ -64,7 +64,7 @@ jobs:
           pkgname=<placeholdername>-bin
           pkgver=${{ inputs.version_name }}
           pkgrel=${{ steps.pkgrel.outputs.pkgrel }}
-          pkgdesc="A short game on solving small java bugs (binary)"
+          pkgdesc="<PlaceholderShortDesc>"
           arch=('x86_64' 'aarch64')
           url="https://github.com/mlm-games/<placeholdername>"
           license=('GPL3')

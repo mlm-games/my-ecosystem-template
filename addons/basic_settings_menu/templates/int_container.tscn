@@ -19,7 +19,6 @@ size_flags_stretch_ratio = 5.5
 [node name="InteractablePartOfSetting" type="SpinBox" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-max_value = 300.0
-step = 5.0
+max_value = 999.0
 rounded = true
 alignment = 1

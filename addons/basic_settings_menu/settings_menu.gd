@@ -20,7 +20,7 @@ const INT_CONTAINER = preload("res://addons/basic_settings_menu/templates/int_co
 const TYPE_TO_TEMPLATE_MAP: Dictionary = {
 	TYPE_BOOL: BOOL_CONTAINER,
 	TYPE_INT: INT_CONTAINER,
-	TYPE_FLOAT: SLIDER_CONTAINER,
+	TYPE_FLOAT: INT_CONTAINER,
 }
 
 @onready var _tabs: Dictionary = {
@@ -83,6 +83,9 @@ func _create_setting_control(parent: Container, category: String, setting_name: 
 		"current_locale":
 			template = OPTION_CONTAINER
 			options = SettingsConstants.LOCALES
+		
+		setting_name when setting_name in ["Master", "Music", "Sfx"]:
+			template = SLIDER_CONTAINER
 		_:
 			# Default to a template based on the value's data type
 			template = TYPE_TO_TEMPLATE_MAP.get(typeof(value))

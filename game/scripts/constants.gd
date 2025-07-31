@@ -1,9 +1,9 @@
 class_name C extends Node # Constants
 
 enum BusNames { # Use get string from enum fn
-	Master = "Master",
-	Sfx = "sfx",
-	Music = "Music"
+	Master,
+	Music,
+	Sfx,
 }
 
 const PATHS = {

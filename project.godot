@@ -32,6 +32,7 @@ DebugShortcutsManager="*res://addons/my-ecosystem-template/managers/debug_shortc
 [display]
 
 window/stretch/mode="canvas_items"
+window/handheld/orientation=4
 
 [editor_plugins]
 

@@ -1,8 +1,6 @@
 @tool
 extends EditorPlugin
 
-#The og author doesn't seem to have enough time so maybe fork and proceed, but keep the plugin author the same?
-
 const OUTPUT_FILE := "res://addons/layer_names/generated/layer_names.gd"
 const SINGLETON_NAME := "LayerNames"
 const SETTING_KEY_FORMAT := "layer_names/%s/layer_%s"

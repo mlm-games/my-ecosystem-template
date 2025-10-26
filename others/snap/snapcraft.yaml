@@ -16,17 +16,7 @@ apps:
   <placeholdername>:
     command: <placeholdername>
     extensions: [gnome]
-    plugs:
-      - home
-      - removable-media
-      - network
-      - opengl
-      - x11
-      - wayland
-      - desktop
-      - desktop-legacy
-      - unity7
-    desktop: others/snap/gui/<placeholdername>.desktop
+    plugs: [home, network, removable-media, unity7]
 
 parts:
   <placeholdername>:

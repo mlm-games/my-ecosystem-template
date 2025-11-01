@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://o7bist5hmyv6"]
+[gd_scene load_steps=3 format=3 uid="uid://o7bist5hmyv6"]
 
+[ext_resource type="Script" uid="uid://c2vnr035tqxi6" path="res://game/scenes/ui/menu.gd" id="1_mv2x2"]
 [ext_resource type="Script" uid="uid://cmo5qw3rubish" path="res://addons/my-ecosystem-template/buttons/anim_button.gd" id="2_e6k5l"]
 
 [node name="EndScreen" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mv2x2")
 metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

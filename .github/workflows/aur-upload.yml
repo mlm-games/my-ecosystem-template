@@ -99,7 +99,7 @@ jobs:
           
               cat > "${pkgdir}/usr/share/applications/<placeholdername>.desktop" << DESKTOP_EOF
           [Desktop Entry]
-          Name=FreeTheBugs #TODO: Edit when using
+          Name=<Placeholdername> #TODO: Edit when using
           Exec=<placeholdername>
           Terminal=false
           Type=Application

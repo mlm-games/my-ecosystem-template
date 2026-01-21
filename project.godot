@@ -12,7 +12,7 @@ config_version=5
 
 config/name="<PlaceHolderName>"
 run/main_scene="uid://ddl5roo03rvdl"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(0.0924416, 0.147392, 0.187741, 1)
 config/icon="res://icon.svg"
 
@@ -20,12 +20,12 @@ config/icon="res://icon.svg"
 
 WindowManager="*res://game/scripts/autoloads/window_manager.gd"
 STransitions="*res://addons/my-ecosystem-template/transitions/screen_transitions.tscn"
-SettingsManager="*res://addons/basic_settings_menu/settings_manager.gd"
-SettingsApplier="*res://addons/basic_settings_menu/settings_applier.gd"
+SettingsManager="*uid://wfehnu87uuxk"
+SettingsApplier="*uid://b5jtf7dbnupqj"
 UiAudioM="*res://addons/my-ecosystem-template/managers/audio/ui_audio_manager.gd"
 AudioM="*res://addons/my-ecosystem-template/managers/audio/autoload_audio_manager.gd"
 PauseMenu="*res://addons/my-ecosystem-template/pause-menu/pause_menu.tscn"
-LayerNames="*res://addons/layer_names/generated/layer_names.gd"
+LayerNames="*uid://dpotfesii40yn"
 A="*res://game/scenes/autoloads/autoload.tscn"
 DebugShortcutsManager="*res://addons/my-ecosystem-template/managers/debug_shortcuts_manager.gd"
 

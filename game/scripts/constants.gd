@@ -6,8 +6,19 @@ enum BusNames { # Use get string from enum fn
 	Sfx,
 }
 
-const PATHS = {
-	CREDITS_SCENE = "uid://bq0gelfcjnqvg",
-	SETTINGS_SCENE = "uid://dp42fom7cc3n0",
-	MENU_SCENE = "uid://ddl5roo03rvdl"
+const SCREENS = {
+	CREDITS = "uid://bq0gelfcjnqvg",
+	SETTINGS = "uid://dp42fom7cc3n0",
+	MENU = "uid://ddl5roo03rvdl",
+	END = "uid://o7bist5hmyv6",
+}
+
+const RESOURCES = {
+	SHADERS = {
+		#CIRCULAR_ENGULF = preload("uid://dnms5hsmipkyv")
+	}
+}
+
+const PATHS =  {
+	
 }

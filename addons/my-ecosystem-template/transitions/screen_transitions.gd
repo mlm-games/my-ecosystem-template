@@ -2,8 +2,6 @@ extends CanvasLayer
 
 signal screen_covered
 
-#const CIRCLE_SHADER = preload("uid://dnms5hsmipkyv")
-
 @onready var transition_player: AnimationPlayer = $TransitionRect/TransitionPlayer
 @onready var transition_rect : ColorRect = $TransitionRect
 @onready var white_rect : ColorRect = $OnScreenEffectsRect

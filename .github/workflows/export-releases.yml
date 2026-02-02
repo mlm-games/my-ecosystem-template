@@ -69,7 +69,7 @@ jobs:
           changelog-path: 'CHANGELOG.md'
           version-file-path: './fastlane/metadata/android/en-US/changelogs/${{ steps.prev_version.outputs.new_code }}.txt'
           version-code: '${{ steps.prev_version.outputs.new_code }}'
-          # metainfo-path: './others/flathub/io.github.mlm_games.<name_with_underscore>.metainfo.xml'  # TODO: Change here when copying
+          metainfo-path: './others/flathub/io.github.mlm_games.<placeholder_name_with_underscore>.metainfo.xml'  # TODO: Change here when copying
           exclude-patterns: 'Update version to,Merge ,Auto-generate changelog'
           auto-commit: 'true'
           commit-message: 'Update release notes for v{{version}}'
@@ -135,7 +135,7 @@ jobs:
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
           BUTLER_UPLOAD: ${{ inputs.upload_to_itch }}
-          GODOT_PREVIEW_BUILDS: true
+          # GODOT_PREVIEW_BUILDS: true
         continue-on-error: true
 
       - name: Set artifact name and pull latest
